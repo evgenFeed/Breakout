@@ -49,7 +49,7 @@ public:
     ///
     ////////////////////////////////////////////////////////////
     explicit RectangleShape(const Vector2f& size = Vector2f(0, 0));
-
+	
     ////////////////////////////////////////////////////////////
     /// \brief Set the size of the rectangle
     ///
@@ -93,6 +93,8 @@ public:
     ///
     ////////////////////////////////////////////////////////////
     virtual Vector2f getPoint(std::size_t index) const;
+
+	
 
 private:
 

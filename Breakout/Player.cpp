@@ -20,10 +20,10 @@ void Player::draw(sf::RenderWindow &window)
 	window.draw(board);
 }
 
-sf::Vector2f Player::getPosBoard()
-{
-	return board.getPosition();
-}
+//sf::Vector2f Player::getPosBoard()
+//{
+//	return board.getPosition();
+//}
 
 void Player::move()
 {
@@ -42,4 +42,9 @@ void Player::move()
 			board.move(MOVE_SPEED, 0);
 		}
 	}
+}
+
+sf::RectangleShape Player::getBoard()
+{
+	return board;
 }

@@ -18,4 +18,3 @@ private:
 	unsigned int WINDOW_WIDTH;
 	unsigned int WINDOW_HEIGHT;
 };
-

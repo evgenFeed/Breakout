@@ -15,5 +15,5 @@ void World::draw(sf::RenderWindow & window)
 {
 	player.draw(window);
 	tiles.draw(window);
-	ball.draw(window, player);
+	ball.draw(window, player, tiles);
 }

@@ -12,15 +12,17 @@ Ball::Ball()
 	ball.setOrigin(5.0f,5.0f);
 	ball.setFillColor(sf::Color(sf::Color::Red));
 	ball.setPosition(sf::Vector2f(400.0f, 575.0f));
+	
 }
 
 Ball::~Ball()
 {
 }
 
-void Ball::draw(sf::RenderWindow & window, Player player)
+void Ball::draw(sf::RenderWindow & window, Player &player, Tiles &tiles)
 {
 	move(player);
+	update_intersect(player, tiles);
 	window.draw(ball);
 }
 
@@ -32,7 +34,7 @@ void Ball::move(Player player)
 	}
  	else
 	{
-		ball.setPosition(player.getPosBoard().x, player.getPosBoard().y - 10);
+		ball.setPosition(player.getBoard().getPosition().x, player.getBoard().getPosition().y - 10);
 		is_move(false);
 	}
 }
@@ -61,3 +63,44 @@ void Ball::is_move(bool move)
 		ball.move(RIGHT_SPEED, UP_SPEED);
 	}
 }
+
+void Ball::intersect(Player player)
+{
+	if (ball.getGlobalBounds().intersects(player.getBoard().getGlobalBounds()))
+	{
+		
+		UP_SPEED = -UP_SPEED;
+	}
+}
+bool operator==(const sf::RectangleShape &Left, const sf::RectangleShape &Right)
+{
+	if (Left.getPosition() == Right.getPosition())
+	{
+		return true;
+	}
+	else
+		return false;
+}
+void Ball::intersect(std::vector<sf::RectangleShape> tiles)
+{
+
+	for (auto i : tiles)
+	{
+		if (ball.getGlobalBounds().intersects(i.getGlobalBounds()))
+		{
+			UP_SPEED = -UP_SPEED;
+			/*auto it = find_if(tiles.begin(), tiles.end(), [i](sf::RectangleShape a) {
+				return i == a;
+			});*/
+			//tiles.erase(std::remove(tiles.begin(), tiles.end(), i), tiles.end());
+		}
+	}
+}
+
+void Ball::update_intersect(Player &player, Tiles &tiles)
+{
+	intersect(player);
+	intersect(tiles.getTiles());
+}
+
+

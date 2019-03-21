@@ -16,6 +16,7 @@ Tiles::Tiles()
 
 Tiles::~Tiles()
 {
+	
 }
 
 void Tiles::draw(sf::RenderWindow & window)
@@ -24,4 +25,9 @@ void Tiles::draw(sf::RenderWindow & window)
 	{
 		window.draw(i);
 	}
+}
+
+std::vector<sf::RectangleShape> Tiles::getTiles()
+{
+	return tiles;
 }
