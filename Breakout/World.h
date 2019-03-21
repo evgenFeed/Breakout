@@ -12,6 +12,6 @@ public:
 	void draw(sf::RenderWindow& window);
 private:
 	Player player;
-	//Tiles tiles;
+	Tiles tiles;
 	Ball ball;
 };
