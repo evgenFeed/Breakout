@@ -14,9 +14,8 @@ World::World()
 		}
 		tiles.push_back(Tile(offsetX += 25, offsetY));
 	}
-	score.setPosition(20,10);
-	score.setString(ball.score_s());
-	score.setCharacterSize(20);
+
+	//score.setFont(sf::Font::loadFromFile(""))
 }
 
 World::~World()
@@ -32,14 +31,9 @@ World::~World()
 void World::draw(sf::RenderWindow & window)
 {
 	player.draw(window);
-	window.draw(score);
-	for (auto i : tiles)
+	for (auto &i : tiles)
 	{
 		i.draw(window);
-		if (sf::Keyboard::isKeyPressed(sf::Keyboard::T))
-		{
-			std::cout << "intersected :" << i.getIntersected() << std::endl;
-		}
 	}
 	ball.draw(window, player, tiles);
 	update_tiles();

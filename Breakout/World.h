@@ -15,5 +15,4 @@ private:
 	Player player;
 	std::vector<Tile> tiles;
 	Ball ball;
-	sf::Text score;
 };

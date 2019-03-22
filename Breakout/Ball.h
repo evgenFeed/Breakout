@@ -18,9 +18,10 @@ public:
 	void intersect(Player &player);
 	void intersect(std::vector<Tile> &tiles);
 	void update_intersect(Player &player, std::vector<Tile> &tiles);
-	std::string score_s();
+	void update_scores();
 private:
 	sf::CircleShape ball;
 	float BALL_SPEED, UP_SPEED, RIGHT_SPEED;
-	int score;
+	int scores;
+	sf::Text score;
 };

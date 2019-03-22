@@ -6,7 +6,12 @@
 
 Ball::Ball()
 {
-	score = 0;
+	scores = 0;
+	//score.setPosition(20.0f, 10.0f);
+	score.setString(std::string("Scores: " + std::to_string(scores)));
+	score.setCharacterSize(20);
+	/*score.setFillColor(sf::Color::White);
+	score.setOutlineColor(sf::Color::White);*/
 	BALL_SPEED = 0.2f;
 	RIGHT_SPEED = UP_SPEED = -BALL_SPEED;  //
  	ball.setRadius(4.5f);
@@ -23,6 +28,7 @@ void Ball::draw(sf::RenderWindow & window, Player &player, std::vector<Tile> &ti
 {
 	move(player);
 	window.draw(ball);
+	window.draw(score);
 	update_intersect(player, tiles);
 }
 
@@ -80,7 +86,8 @@ void Ball::intersect(std::vector<Tile> &tiles)
 		{
 			UP_SPEED = -UP_SPEED;
 			i.setIntersected(true);
-			score++;
+			scores++;
+			update_scores();
 		}
 	}
 }
@@ -91,7 +98,9 @@ void Ball::update_intersect(Player &player, std::vector<Tile> &tiles)
 	intersect(tiles);
 }
 
-std::string Ball::score_s()
+void Ball::update_scores()
 {
-	return std::string("Score: " + std::to_string(score));
+	score.setString("Scores: " + std::to_string(scores));
 }
+
+
