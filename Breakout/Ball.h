@@ -4,6 +4,8 @@
 #include "Tile.h"
 #include <vector>
 #include <algorithm>
+#include <iostream>
+#include <string>
 
 class Ball
 {
@@ -16,8 +18,9 @@ public:
 	void intersect(Player &player);
 	void intersect(std::vector<Tile> &tiles);
 	void update_intersect(Player &player, std::vector<Tile> &tiles);
-
+	std::string score_s();
 private:
 	sf::CircleShape ball;
 	float BALL_SPEED, UP_SPEED, RIGHT_SPEED;
+	int score;
 };

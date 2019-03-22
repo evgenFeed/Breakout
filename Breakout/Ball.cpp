@@ -6,6 +6,7 @@
 
 Ball::Ball()
 {
+	score = 0;
 	BALL_SPEED = 0.2f;
 	RIGHT_SPEED = UP_SPEED = -BALL_SPEED;  //
  	ball.setRadius(4.5f);
@@ -21,8 +22,8 @@ Ball::~Ball()
 void Ball::draw(sf::RenderWindow & window, Player &player, std::vector<Tile> &tiles)
 {
 	move(player);
-	update_intersect(player, tiles);
 	window.draw(ball);
+	update_intersect(player, tiles);
 }
 
 void Ball::move(Player &player)
@@ -62,15 +63,6 @@ void Ball::is_move(bool move)
 		ball.move(RIGHT_SPEED, UP_SPEED);
 	}
 }
-bool operator==(const sf::RectangleShape &Left, const sf::RectangleShape &Right)
-{
-	if (Left.getPosition() == Right.getPosition())
-	{
-		return true;
-	}
-	else
-		return false;
-}
 
 void Ball::intersect(Player &player)
 {
@@ -82,16 +74,15 @@ void Ball::intersect(Player &player)
 
 void Ball::intersect(std::vector<Tile> &tiles)
 {
-	for (auto i : tiles)
+	for (auto& i : tiles)
 	{
 		if (ball.getGlobalBounds().intersects(i.getTile().getGlobalBounds()))
 		{
 			UP_SPEED = -UP_SPEED;
 			i.setIntersected(true);
-			
+			score++;
 		}
 	}
-	
 }
 
 void Ball::update_intersect(Player &player, std::vector<Tile> &tiles)
@@ -100,4 +91,7 @@ void Ball::update_intersect(Player &player, std::vector<Tile> &tiles)
 	intersect(tiles);
 }
 
-
+std::string Ball::score_s()
+{
+	return std::string("Score: " + std::to_string(score));
+}

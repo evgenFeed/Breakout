@@ -11,7 +11,6 @@ Tile::Tile(float offsetX, float offsetY)
 	intersected = false;
 }
 
-
 Tile::~Tile()
 {
 	
@@ -20,6 +19,7 @@ Tile::~Tile()
 void Tile::draw(sf::RenderWindow & window)
 {
 	window.draw(tile);
+	
 }
 
 sf::RectangleShape Tile::getTile()
@@ -36,5 +36,3 @@ bool Tile::getIntersected()
 {
 	return intersected;
 }
-
-
