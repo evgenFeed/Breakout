@@ -19,9 +19,8 @@ Game::Game()
 		}
 
 		window->clear();
-
+		
 		world.draw(*window);
-
 		window->display();
 	}
 }

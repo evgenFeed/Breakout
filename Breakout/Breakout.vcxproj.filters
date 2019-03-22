@@ -30,7 +30,7 @@
     <ClCompile Include="Ball.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="Tiles.cpp">
+    <ClCompile Include="Tile.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
@@ -47,7 +47,7 @@
     <ClInclude Include="Ball.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
-    <ClInclude Include="Tiles.h">
+    <ClInclude Include="Tile.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
