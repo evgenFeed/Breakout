@@ -6,10 +6,10 @@
 class Tile
 {
 public:
-	Tile(float offsetX, float offsetY);
+	Tile(float offsetX, float offsetY, int color);
 	~Tile();
 	void draw(sf::RenderWindow &window);
-	sf::RectangleShape getTile();
+	sf::RectangleShape &getTile();
 	void setIntersected(bool val);
 	bool getIntersected();
 private:

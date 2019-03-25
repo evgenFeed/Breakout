@@ -85,10 +85,27 @@ void Ball::intersect(std::vector<Tile> &tiles)
 	{
 		if (ball.getGlobalBounds().intersects(i.getTile().getGlobalBounds()))
 		{
-			UP_SPEED = -UP_SPEED;
-			i.setIntersected(true);
-			scores++;
-			update_scores();
+			if (i.getTile().getFillColor() == sf::Color::White)
+			{
+				UP_SPEED = -UP_SPEED;
+				i.setIntersected(true);
+				scores++;
+				update_scores();
+			}
+			else if (i.getTile().getFillColor() == sf::Color::Red)
+			{
+				UP_SPEED = -UP_SPEED;
+				i.getTile().setFillColor(sf::Color::White);
+				scores+=2;
+				update_scores();
+			}
+			else if (i.getTile().getFillColor() == sf::Color::Blue)
+			{
+				UP_SPEED = -UP_SPEED;
+				i.getTile().setFillColor(sf::Color::Red);
+				scores += 4;
+				update_scores();
+			}
 		}
 	}
 }
@@ -114,5 +131,5 @@ int Ball::getScores()
 }
 
 bool Ball::end = false;
-int Ball::scores = 100;
+int Ball::scores = 0;
 

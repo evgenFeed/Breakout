@@ -4,6 +4,7 @@
 
 World::World()
 {
+	int color = 3;
 	float offsetX = 0, offsetY = 30;
 	for (int i = 0; i < QUANTITY; i++)
 	{
@@ -11,8 +12,9 @@ World::World()
 		{
 			offsetY += 12;
 			offsetX = 0;
+			color--;
 		}
-		tiles.push_back(Tile(offsetX += 25, offsetY));
+		tiles.push_back(Tile(offsetX += 25, offsetY, color));
 	}
 
 }
