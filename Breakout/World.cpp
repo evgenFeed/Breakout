@@ -1,13 +1,13 @@
 #include "World.h"
 
-const int QUANTITY = 100;
+
 
 World::World()
 {
-	float offsetX = 0, offsetY = 20;
+	float offsetX = 0, offsetY = 30;
 	for (int i = 0; i < QUANTITY; i++)
 	{
-		if (offsetX >= 750)
+		if (offsetX >= 720)
 		{
 			offsetY += 12;
 			offsetX = 0;
@@ -15,13 +15,12 @@ World::World()
 		tiles.push_back(Tile(offsetX += 25, offsetY));
 	}
 
-	//score.setFont(sf::Font::loadFromFile(""))
 }
 
 World::~World()
 {
 	player.~Player();
-	ball.~Ball();
+	redball.~Ball();
 	for (auto i : tiles)
 	{
 		i.~Tile();
@@ -35,7 +34,7 @@ void World::draw(sf::RenderWindow & window)
 	{
 		i.draw(window);
 	}
-	ball.draw(window, player, tiles);
+	redball.draw(window, player, tiles);
 	update_tiles();
 }
 
@@ -51,4 +50,10 @@ void World::update_tiles()
 		else return false;
 	}), tiles.end());
 }
+
+int World::getQuantity()
+{
+	return QUANTITY;
+}
+
 

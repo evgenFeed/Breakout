@@ -4,22 +4,27 @@
 
 Game::Game()
 {
+	bool pause = false;
 	setWindowWidth(800);
 	setWindowHeight(600);
 	createWindow();
-
+	std::cout << "Wordl::getQuantity() = " << World::getQuantity();
 	while (window->isOpen())
 	{
 		//events
 		sf::Event event;
 		while (window->pollEvent(event))
 		{
-			if (event.type == sf::Event::Closed)
+			if (event.type == sf::Event::Closed)// Congratulations::get_closed())
 				window->close();
+			if (Ball::end == true)
+			{
+				Congratulations *scores = new Congratulations();
+				pause = true;
+			}
+				
 		}
-
 		window->clear();
-		
 		world.draw(*window);
 		window->display();
 	}
@@ -68,3 +73,4 @@ void Game::setWindowHeight(unsigned int h)
 {
 	WINDOW_HEIGHT = h;
 }
+

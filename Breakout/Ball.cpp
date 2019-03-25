@@ -6,12 +6,13 @@
 
 Ball::Ball()
 {
-	scores = 0;
-	//score.setPosition(20.0f, 10.0f);
+	end = false;
+	moves = false;
+	//scores = 0;
+	font.loadFromFile("arial.ttf");
+	score.setFont(font);
 	score.setString(std::string("Scores: " + std::to_string(scores)));
-	score.setCharacterSize(20);
-	/*score.setFillColor(sf::Color::White);
-	score.setOutlineColor(sf::Color::White);*/
+	score.setCharacterSize(18);
 	BALL_SPEED = 0.2f;
 	RIGHT_SPEED = UP_SPEED = -BALL_SPEED;  //
  	ball.setRadius(4.5f);
@@ -27,6 +28,7 @@ Ball::~Ball()
 void Ball::draw(sf::RenderWindow & window, Player &player, std::vector<Tile> &tiles)
 {
 	move(player);
+	is_move(moves);
 	window.draw(ball);
 	window.draw(score);
 	update_intersect(player, tiles);
@@ -36,12 +38,11 @@ void Ball::move(Player &player)
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
 	{
-		is_move(true);
+		moves = true; 
 	}
- 	else
+	else if (moves == false)
 	{
 		ball.setPosition(player.getBoard().getPosition().x, player.getBoard().getPosition().y - 10);
-		is_move(false);
 	}
 }
 
@@ -101,6 +102,17 @@ void Ball::update_intersect(Player &player, std::vector<Tile> &tiles)
 void Ball::update_scores()
 {
 	score.setString("Scores: " + std::to_string(scores));
+	if (scores >= 100)
+	{
+		end = true;
+	}
 }
 
+int Ball::getScores()
+{
+	return scores;
+}
+
+bool Ball::end = false;
+int Ball::scores = 100;
 

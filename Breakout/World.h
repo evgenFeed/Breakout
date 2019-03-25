@@ -11,8 +11,10 @@ public:
 	~World();
 	void draw(sf::RenderWindow& window);
 	void update_tiles();
+	static int getQuantity();
 private:
 	Player player;
 	std::vector<Tile> tiles;
-	Ball ball;
+	Ball redball;
+	static const int QUANTITY = 100;
 };

@@ -1,24 +1,25 @@
 #pragma once
-#include <SFML\Graphics.hpp>
-#include "World.h"
-#include "Congratulations.h"
 #include "Ball.h"
+#include "Game.h"
 
-class Game
+class Congratulations
 {
 public:
-	Game();
-	~Game();
-	sf::RenderWindow *window;
-	void createWindow();
+	Congratulations();
+	~Congratulations();
+	void create_congratulations();
 	unsigned int getWindowWidth();
 	unsigned int getWindowHeight();
 	void setWindowWidth(unsigned int w);
 	void setWindowHeight(unsigned int h);
-
+	static bool get_closed();
 private:
-	World world;
+	sf::Text score;
+	sf::Text congr;
+	sf::Font font;
+	sf::RenderWindow *for_cong;
 	unsigned int WINDOW_WIDTH;
 	unsigned int WINDOW_HEIGHT;
-	bool pause;
+	static bool closed;
 };
+
