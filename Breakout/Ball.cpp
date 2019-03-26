@@ -96,10 +96,10 @@ void Ball::intersect(std::vector<Tile> &tiles)
 			{
 				UP_SPEED = -UP_SPEED;
 				i.getTile().setFillColor(sf::Color::White);
-				scores+=2;
+				scores += 2;
 				update_scores();
 			}
-			else if (i.getTile().getFillColor() == sf::Color::Blue)
+			else if (i.getTile().getFillColor() == sf::Color::Magenta)
 			{
 				UP_SPEED = -UP_SPEED;
 				i.getTile().setFillColor(sf::Color::Red);

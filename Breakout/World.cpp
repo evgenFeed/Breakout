@@ -8,7 +8,7 @@ World::World()
 	float offsetX = 0, offsetY = 30;
 	for (int i = 0; i < QUANTITY; i++)
 	{
-		if (offsetX >= 720)
+		if (offsetX >= 700)
 		{
 			offsetY += 12;
 			offsetX = 0;
